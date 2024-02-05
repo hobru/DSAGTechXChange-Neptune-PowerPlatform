@@ -51,10 +51,12 @@ Fill in the required information.
 
 
 * Click on "Use sample payload to generate schema" and paste the following JSON sample (this is what is sent from Neptune to our Power Automate flow). Then click on "Done"
+```
 {
     "messageID": 111,
     "messageText": "Hello, World!"
 }
+```
 
 ![Power Automate](images/06-SamplePayload.png)
 
@@ -142,7 +144,7 @@ Fill in the required information.
 * Enter the fx to take the response from the Teams action
 
 ```
-@{body('Post_Adaptive_Card_and_wait_for_a_response')?['submitActionId']}
+body('Post_Adaptive_Card_and_wait_for_a_response')?['submitActionId']
 ```
 
 
