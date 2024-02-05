@@ -206,7 +206,7 @@ Now that we have the Neptune app running, let's switch over to Power Automate. F
 - Save the Power Automate Flow
   ![Power Automate](images/12-SavePA.png)
 
-- Click on the manual trigger action and copy the HTTP POST URL. This is the URL that will be used on the Neptune side to trigger the flow.
+- Click on the `manual` trigger action and `copy the HTTP POST URL`. This is the URL that will be used on the Neptune side to trigger the flow.
   ![Power Automate](images/13-CopyHTTPUrl.png)
 
 > [!NOTE]
