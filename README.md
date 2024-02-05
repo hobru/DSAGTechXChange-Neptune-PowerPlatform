@@ -2,6 +2,14 @@
 
 Hands-on Session as part of the [DSAG TechXChange 2024](https://dsag.de/wp-content/uploads/2023/12/Programm_und_Agenda_DSAG-TechXchange.pdf)
 
+## 🥅 Goal
+
+In this session we want to show how easiy it is to combine the strength of Neptunes DXP platform to build UI5 apps in a low-code approach and combine this with a Power Automate flow to send approval notifications to Teams. 
+
+As a result you will have a simple App, that allows you to create a new Sales Order, then see the notification in Teams and approve it directly from there. 
+
+
+
 
 ## 🤝 Neptune DXP
 
@@ -87,7 +95,7 @@ apiTriggerPowerAutomate(options);
 TODO add screenshots when app is finished and store planet9 file also in this repo
 
 
-## Power Platform
+## 🤝 Power Platform
 
 Now that we have the Neptune app running, let's switch over to Power Automate. For this hands-on session, we have created an environment for you!
 
@@ -98,7 +106,7 @@ Now that we have the Neptune app running, let's switch over to Power Automate. F
 
 
 
-## 🤝 Create your first Power Automate Flow
+###  Create your first Power Automate Flow
 
 - Go to https://make.powerautomate.com/
   ![Power Automate](images/01-PowerAutomate.png)
@@ -207,6 +215,7 @@ Now that we have the Neptune app running, let's switch over to Power Automate. F
 
 ## 🤝 Switch back to Neptune DXP
 Add the URL from above to your Neptune App. Then give it a try and trigger the Power Automate flow by clicking on Submit. 
+TODO!!!
 
  
 
@@ -245,6 +254,7 @@ body('Post_Adaptive_Card_and_wait_for_a_response')?['submitActionId']
   ![Power Automate](images/21-HTTPAction.png)
 
 - Add the URL to the Endpoint on the SAP/Neptune side
+- TODO!!! Where / when do I get the URL from Netpune??
 
 - This is how the flow overall should look like
   ![Power Automate](images/23-PA-Flow.png)
