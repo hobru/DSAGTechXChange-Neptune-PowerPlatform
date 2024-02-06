@@ -17,7 +17,7 @@ Login to the Neptune Cockpit
 
 https://neptune-academy.neptune-software.cloud/cockpit.html
 
-- Username: dsagxx (for xx user your group number e.g. dsag01)
+- Username: dsagxx (for xx user your group number e.g. dsag1)
 - Password: dsag24
 
 ### Neptune App Designer
@@ -26,7 +26,7 @@ We will start by creating a new Neptune app with the App Designer.
 
 - Download the following planet9 file from https://github.com/hobru/DSAGTechXChange-Neptune-PowerPlatform/blob/main/dsag_tech_exchange_salesorders.planet9 and store it locally.
 
-- From the Neptune Cockpit start the App Designer Tool by clicking on the tile
+- From the Neptune Cockpit start the `App Designer` Tool by clicking on the tile
   ![App Designer](images/neptune-app-designer-tile.jpg)
 
 - In the dialog select "New from file"
@@ -37,9 +37,6 @@ We will start by creating a new Neptune app with the App Designer.
 
 - Fill in a name for the app like salesorder_approval_xx (For xx use the number of the group to make the app unique)
   ![Open](images/neptune-newapp.jpg)
-
-- Test the application by pressing run
-  ![Run](images/neptune_app_designer_run.jpg)
 
 ### Connect OData Service + REST Services
 
@@ -54,6 +51,8 @@ Return to the App Designer
 - Drag the ODataSource from the tree to the Resource and rename it SalesOrderOData
 
 ![Connect OData](images/neptune-app-designer-odata.jpg)
+
+- With the `SalesOrderData` service selected on the right of the screen select the oData source `SalesOrder` from the list
 
 - Drag the RestAPI from the tree to Resource and rename it to TriggerPowerAutomate
 
