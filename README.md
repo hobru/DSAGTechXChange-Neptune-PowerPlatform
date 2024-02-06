@@ -6,7 +6,7 @@ Hands-on Session as part of the [DSAG TechXChange 2024](https://dsag.de/wp-conte
 
 In this session we want to show how easiy it is to combine the strength of Neptunes DXP platform to build UI5 apps in a low-code approach and combine this with a Power Automate flow to send approval notifications to Teams. 
 
-As a result you will have a simple App, that allows you to create a new Sales Order, then see the notification in Teams and approve it directly from there. 
+As a result you will have a simple App, that allows you to trigger an Approval for a SAP Sales Order, then see the notification in Teams and approve it directly from there. 
 
 
 
@@ -15,10 +15,10 @@ As a result you will have a simple App, that allows you to create a new Sales Or
 
 Login to the Neptune Cockpit
 
-https://gtmdemosystem.neptune-software.cloud/cockpit.html
+https://neptune-academy.neptune-software.cloud/cockpit.html
 
-- Username: techexchange
-- Password: techexchange2024
+- Username: dsagxx (for xx user your group number e.g. dsag01)
+- Password: dsag24
 
 ### Neptune App Designer
 
@@ -64,36 +64,6 @@ Return to the App Designer
 Run the application again and check if the Sales Orders are displayed in the list and you can click a item from the list to see the details
 
 ![Sales Orders List](images/neptune-sales-orders-list.jpg)
-
-### Implement the trigger button
-
-Search for the TriggerButton in the UI tree and select it
-
-![Trigger Button](images/neptune-trigger-button.jpg)
-
-On the right side in the panel click the button next to the press function
-
-![Trigger press](images/neptune-trigger-button-press.jpg)
-
-We can now adjust the JavaScript code and add the following logic to call the trigger API
-
-```js
-var options = {
-  parameters: {
-    "api-version": "2016-06-01", // Optional
-    sp: "%2Ftriggers%2Fmanual%2Frun", // Optional
-    sv: "1.0", // Optional
-    sig: "_UO6mNVAhQwYaFEdWBVsSZq_bolYF8Ee9iUL1BHvUK4", // Optional
-  },
-};
-
-apiTriggerPowerAutomate(options);
-```
-
-### Run the application and trigger a call to Power Automate
-
-TODO add screenshots when app is finished and store planet9 file also in this repo
-
 
 ## 🤝 Power Platform
 
@@ -214,10 +184,86 @@ Now that we have the Neptune app running, let's switch over to Power Automate. F
 
 
 ## 🤝 Switch back to Neptune DXP
-Add the URL from above to your Neptune App. Then give it a try and trigger the Power Automate flow by clicking on Submit. 
-TODO!!!
 
- 
+https://neptune-academy.neptune-software.cloud/cockpit.html
+
+### API Designer
+
+In the Neptune Cockpit select the `API Designer` tile and open it.
+
+Here we will add a new API for the Power Automate Trigger and this API can be called from the Neptune Application.
+
+
+- Click on the `Add` button to create a new API
+![new API](images/neptune-add-api.jpg)
+
+- Fill in a unique name e.g. `DSAGTechExchangePowerAutomateTrigger_xx` where `xx` is your group number and copy only the first part of the URL until /path from Power Automate as `Endpoint`
+eg. `https://prod-150.westeurope.logic.azure.com:443/workflows/9a92351242184f7d9fc6f322cddf9df3/triggers/manual/paths`
+![API Designer Add](images/neptune-api-designer.jpg)
+
+- Enable the checkbox for `Enable Proxy` and `Use in App Designer & App Editor`
+![API Designer checkbox](images/neptune-api-designer2.jpg)
+
+- Go to the `Operations` tab and press the `+` button and enter the following values
+  - Path: `/invoke`
+  - Method: `POST`
+
+- Go to the Request tab and enter the following parameters
+  - api-version: `2016-06-01`
+  - sp: `%2Ftriggers%2Fmanual%2Frun`
+  - sv: `1.0`
+  - sig: `_UO6mNVAhQwYaFEdWBVsSZq_bolYF8Ee9iUL1BHvUK4`
+  
+  ![API Designer parameters](images/neptune-api-designer3.jpg)
+
+
+- Finally press `Save` to store the API Endpoint
+
+### App Designer
+
+Now we can use this API endpoint in our application. Open the App Designer again https://neptune-academy.neptune-software.cloud/appdesigner.html
+
+- In the Tree library search for `RestAPI` and drag it under resources 
+![App Designer RestAPI](images/neptune-appdesigner-restapi.jpg)
+
+- Rename the `RestAPI` to `TriggerPowerAutomate`
+
+Now we will implement some code behind the Trigger Button.
+
+Search for the `ButtonTrigger` in the UI tree and select it
+
+![Trigger Button](images/neptune-trigger-button.jpg)
+
+On the right side of the screen in the panel click the button next to the press function
+
+![Trigger press](images/neptune-trigger-button-press.jpg)
+
+Add the place where the `TODO` comment is you can add the API call by using the code snippets functionality.
+
+- Right-click in the Javascript file at the place you want to put the code
+- Collapse the API option and select `TriggerPowerAutomate` and press `Copy`
+
+
+The code similar to below will be copied. The values might slight differ because the parameters from each users are different because of the different Power Automate API Endpoints
+```js
+var options = {
+  parameters: {
+    "api-version": "2016-06-01", // Optional
+    sp: "%2Ftriggers%2Fmanual%2Frun", // Optional
+    sv: "1.0", // Optional
+    sig: "_UO6mNVAhQwYaFEdWBVsSZq_bolYF8Ee9iUL1BHvUK4", // Optional
+  },
+};
+
+apiTriggerPowerAutomate(options);
+```
+
+### Run the application and trigger a call to Power Automate
+
+Press the `Run` button on top of the screen to start the application
+
+- Open a Sales Order from the list and press the `Trigger Approval` button
+![Trigger Approval](images/neptune-app-trigger-approval.jpg)
 
 ## 🤝 Switch back to Power Automate
 - Open up [Teams](https://teams.microsoft.com/) and navigate to the Channel you had specified. If everything worked fine, you should see an adaptive card.
@@ -253,8 +299,42 @@ body('Post_Adaptive_Card_and_wait_for_a_response')?['submitActionId']
 - Search for `HTTP` and select the `HTTP action`
   ![Power Automate](images/21-HTTPAction.png)
 
-- Add the URL to the Endpoint on the SAP/Neptune side
-- TODO!!! Where / when do I get the URL from Netpune??
+- Enter the following values
+  - URI: `https://neptune-academy.neptune-software.cloud/api/serverscript/dsagtechexchangepowerautomate/approve`
+  - Method: `POST`
+  - Body:  
+    ```json
+    {
+      "SalesOrder": @{triggerBody()?['messageID']}
+    }
+    ```
+
+  ![Power Automate](images/24-HTTP-Approve.jpg)
+
+- For the Authentication select 'Authentication' under Advanced parameters and enter the following values
+  - Authentication Type: `Basic`
+  - Username: `dsag`
+  - Password: `dsag24` (you can also use your own username/password for your Neptune user)
+![Power Automate](images/25-HTTP-Authentication.jpg)
+
+
+- Save the Power Automate Flow
 
 - This is how the flow overall should look like
   ![Power Automate](images/23-PA-Flow.png)
+
+
+## 🤝 Switch back to Neptune DXP
+
+You can now go back to your Neptune application in the browser or start it again from the App Designer.
+
+- Trigger another Sales Order Approval
+![Trigger Approval](images/neptune-app-trigger-approval.jpg)
+
+- Approve the Sales Order in Teams
+![Teams Approval](images/teams-approval.jpg)
+
+- Refresh the Sales Orders list and check if the Sales Order is approved
+![Neptune Approval](images/neptune-salesorder-approved.jpg)
+
+
