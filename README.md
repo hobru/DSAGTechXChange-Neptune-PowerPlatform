@@ -121,7 +121,10 @@ Now that we have the Neptune app running, let's switch over to Power Automate. F
 - Click on `Sign-in` to connect the Power Automate flow with Teams. Sign-in with your Microsoft 365 user.
   ![Power Automate](images/09-TeamsSignIn.png)
 
-- Select the Channel and Teams where the Adaptive Card should be posted
+- Select the Channel and Teams where the Adaptive Card should be posted. 
+* Post In: `Channel`
+* Team: `Contoso`
+* Channel: <Please select the User that was assigned to you, e.g. `DSAG1`>
   ![Power Automate](images/10-SelectTeamsChannel.png)
 
 - Paste the content for the adaptive card from below in the Message field
