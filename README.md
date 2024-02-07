@@ -44,19 +44,16 @@ In the Cockpit open the OData Source Tool and search for the SalesOrders service
 
 ![OData](images/neptune-odata-service.jpg)
 
-This is the service we will use in our application
+This is the service we will use in our application it is connect to our S/4 HANA system and will be used to retrieve the Sales Orders.
 
-Return to the App Designer
+Return to the App Designer https://neptune-academy.neptune-software.cloud/appdesigner.html and open the Application created before.
 
-- Drag the ODataSource from the tree to the Resource and rename it SalesOrderOData
 
+- Drag the ODataSource from the tree to the Resources in the Application structure and rename it SalesOrderOData
 ![Connect OData](images/neptune-app-designer-odata.jpg)
 
-- With the `SalesOrderData` service selected on the right of the screen select the oData source `SalesOrder` from the list
-
-- Drag the RestAPI from the tree to Resource and rename it to TriggerPowerAutomate
-
-![Connect RESTAPI](images/neptune-powerautomate-restapi.jpg)
+- Select the `SalesOrderData` service and on the right of the screen select the oData source `SalesOrder` from the list
+![Neptune](images/neptune-app-designer-odata2.jpg)
 
 ### Test the app
 
