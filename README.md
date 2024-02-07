@@ -57,7 +57,7 @@ Return to the App Designer https://neptune-academy.neptune-software.cloud/appdes
 
 ### Test the app
 
-Run the application again and check if the Sales Orders are displayed in the list and you can click a item from the list to see the details
+Press the `Activate` button on the top of the screen and press `Run` to start the application again. Check if the Sales Orders are displayed in the list and you can click an item from the list to see the details.
 
 ![Sales Orders List](images/neptune-sales-orders-list.jpg)
 
@@ -187,13 +187,13 @@ https://neptune-academy.neptune-software.cloud/cockpit.html
 
 In the Neptune Cockpit select the `API Designer` tile and open it.
 
-Here we will add a new API for the Power Automate Trigger and this API can be called from the Neptune Application.
+Here we will add a new API for the Power Automate Trigger. This API will be used in the Neptune Application.
 
 
 - Click on the `Add` button to create a new API
 ![new API](images/neptune-add-api.jpg)
 
-- Fill in a unique name e.g. `DSAGTechExchangePowerAutomateTrigger_xx` where `xx` is your group number and copy only the first part of the URL until /path from Power Automate as `Endpoint`
+- Fill in a unique name e.g. `DSAGTechExchangePowerAutomateTrigger_xx` where `xx` is your group number and copy only the first part of the URL until `/paths` from Power Automate as `Endpoint`
 eg. `https://prod-150.westeurope.logic.azure.com:443/workflows/9a92351242184f7d9fc6f322cddf9df3/triggers/manual/paths`
 ![API Designer Add](images/neptune-api-designer.jpg)
 
@@ -204,7 +204,11 @@ eg. `https://prod-150.westeurope.logic.azure.com:443/workflows/9a92351242184f7d9
   - Path: `/invoke`
   - Method: `POST`
 
-- Go to the Request tab and enter the following parameters
+- Go to the Request tab and enter the following parameters.
+
+> [!IMPORTANT]  
+> Please use the correct values from the copied URL from Power Automate, otherwise you will trigger the wrong endpoint later. Especially the `sig` parameter is important since that is unique for your Power Automate Flow.
+
   - api-version: `2016-06-01`
   - sp: `%2Ftriggers%2Fmanual%2Frun`
   - sv: `1.0`
@@ -213,7 +217,7 @@ eg. `https://prod-150.westeurope.logic.azure.com:443/workflows/9a92351242184f7d9
   ![API Designer parameters](images/neptune-api-designer3.jpg)
 
 
-- Finally press `Save` to store the API Endpoint
+- Press `Save` to store the API Endpoint
 
 ### App Designer
 
@@ -223,6 +227,10 @@ Now we can use this API endpoint in our application. Open the App Designer again
 ![App Designer RestAPI](images/neptune-appdesigner-restapi.jpg)
 
 - Rename the `RestAPI` to `TriggerPowerAutomate`
+- On the right side press the select box next to `Rest API:`
+![App Designer RestAPI](images/neptune-appdesigner-restapi2.jpg)
+- In the search dialog search for your `DSAGTechExchangePowerAutomateTrigger_xx` and select the `POST` method.
+![App Designer RestAPI](images/neptune-appdesigner-restapi3.jpg)
 
 Now we will implement some code behind the Trigger Button.
 
@@ -236,11 +244,12 @@ On the right side of the screen in the panel click the button next to the press 
 
 Add the place where the `TODO` comment is you can add the API call by using the code snippets functionality.
 
-- Right-click in the Javascript file at the place you want to put the code
-- Collapse the API option and select `TriggerPowerAutomate` and press `Copy`
+- Right-click in the Javascript file at the place you want to put the code and select the `Code snippets` option
+- Collapse the API option. 
+- Select `TriggerPowerAutomate` and press `Copy`
 
 
-The code similar to below will be copied. The values might slight differ because the parameters from each users are different because of the different Power Automate API Endpoints
+The code similar to below will be copied. The values might slightly differ because the parameters for each user are different because of the different Power Automate API Endpoints
 ```js
 var options = {
   parameters: {
@@ -256,7 +265,7 @@ apiTriggerPowerAutomate(options);
 
 ### Run the application and trigger a call to Power Automate
 
-Press the `Run` button on top of the screen to start the application
+Press the `Activate` button and press the `Run` button on top of the screen to start the application
 
 - Open a Sales Order from the list and press the `Trigger Approval` button
 ![Trigger Approval](images/neptune-app-trigger-approval.jpg)
