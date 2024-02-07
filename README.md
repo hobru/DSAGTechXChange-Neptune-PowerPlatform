@@ -8,8 +8,45 @@ In this session we want to show how easiy it is to combine the strength of Neptu
 
 As a result you will have a simple App, that allows you to trigger an Approval for a SAP Sales Order, then see the notification in Teams and approve it directly from there. 
 
+## Logistics
+
+| Neptune User | Neptune	Power Platform & Teams User |
+|--------------|-----------|
+|DSAG1|alans@CRM625261.OnMicrosoft.com	|
+|DSAG2|aliciat@CRM625261.OnMicrosoft.com|	
+|DSAG3|allieb@CRM625261.OnMicrosoft.com|	
+|DSAG4|amya@CRM625261.OnMicrosoft.com	|
+|DSAG5|annew@CRM625261.OnMicrosoft.com	|
+|DSAG6|carlosg@CRM625261.OnMicrosoft.com	|
+|DSAG7|christag@CRM625261.OnMicrosoft.com|	
+|DSAG8|danj@CRM625261.OnMicrosoft.com	|
+|DSAG9|davids@CRM625261.OnMicrosoft.com	|
+|DSAG10|dianep@CRM625261.OnMicrosoft.com|	
+|DSAG11|ericg@CRM625261.OnMicrosoft.com	|
+|DSAG12|gregw@CRM625261.OnMicrosoft.com	|
+|DSAG13|jamier@CRM625261.OnMicrosoft.com|	
+|DSAG14|jeffh@CRM625261.OnMicrosoft.com	|
+|DSAG15|juliani@CRM625261.OnMicrosoft.com|	
+|DSAG16|karenb@CRM625261.OnMicrosoft.com|	
+|DSAG17|kellyk@CRM625261.OnMicrosoft.com|	
+|DSAG18|mollyc@CRM625261.OnMicrosoft.com|	
+|DSAG19|reneel@CRM625261.OnMicrosoft.com|	
+|DSAG20|sanjays@CRM625261.OnMicrosoft.com	|
+|DSAG21|spencerl@CRM625261.OnMicrosoft.com|	
+|DSAG22|svenm@CRM625261.OnMicrosoft.com	|
+|DSAG23|veronicaq@CRM625261.OnMicrosoft.com|	
+|DSAG24|williamc@CRM625261.OnMicrosoft.com|	
+|---|- Careful, the Domain is changed for the next ones! - |
+|DSAG25|jeffh@CRM433983.onmicrosoft.com|	
+|DSAG26|juliani@CRM433983.onmicrosoft.com|	
+|DSAG27|karenb@CRM433983.onmicrosoft.com|	
+|DSAG28|kellyk@CRM433983.onmicrosoft.com|	
+|DSAG29|gregw@CRM433983.onmicrosoft.com|	
+|DSAG30|ericg@CRM433983.onmicrosoft.com|	
+	
 
 
+Password will be provided during the workshop. 
 
 ## 🤝 Neptune DXP
 
@@ -18,7 +55,6 @@ Login to the Neptune Cockpit
 https://neptune-academy.neptune-software.cloud/cockpit.html
 
 - Username: dsagxx (for xx user your group number e.g. dsag1)
-- Password: dsag24
 
 ### Neptune App Designer
 
