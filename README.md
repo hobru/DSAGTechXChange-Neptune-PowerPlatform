@@ -4,9 +4,9 @@ Hands-on Session as part of the [DSAG TechXChange 2024](https://dsag.de/wp-conte
 
 ## 🥅 Goal
 
-In this session we want to show how easiy it is to combine the strength of Neptunes DXP platform to build UI5 apps in a low-code approach and combine this with a Power Automate flow to send approval notifications to Teams. 
+In this session, we want to show how easily it is to combine the strength of the Neptune DXP to build UI5 apps in a low-code approach and combine this with a Power Automate flow to send approval notifications to Teams. 
 
-As a result you will have a simple App, that allows you to trigger an Approval for a SAP Sales Order, then see the notification in Teams and approve it directly from there. 
+As a result, you will have a simple App, that allows you to trigger an Approval for a SAP Sales Order, then see the notification in Teams and approve it directly from there. 
 
 ## Logistics
 
@@ -80,7 +80,7 @@ In the Cockpit open the OData Source Tool and search for the SalesOrders service
 
 ![OData](images/neptune-odata-service.jpg)
 
-This is the service we will use in our application it is connect to our S/4 HANA system and will be used to retrieve the Sales Orders.
+This is the service we will use in our application to connect to our S/4 HANA system and will be used to retrieve the Sales Orders.
 
 Return to the App Designer https://neptune-academy.neptune-software.cloud/appdesigner.html and open the Application created before.
 
@@ -301,6 +301,35 @@ var options = {
 
 apiTriggerPowerAutomate(options);
 ```
+
+One more change is needed to also send the SalesOrder number and the comment to the Power Automate Endpoint. For that, we need to add the following to the options object.
+
+```js
+data: {
+        "messageID": Number(data.SalesOrder),
+        "messageText": oTextAreaComments.getValue()
+    }
+```
+
+The complete API call should look similar to this.
+
+```js
+var options = {
+    parameters: {
+        "api-version": "2016-06-01", // Optional 
+        "sp": "%2Ftriggers%2Fmanual%2Frun", // Optional 
+        "sv": "1.0", // Optional 
+        "sig": "_UO6mNVAhQwYaFEdWBVsSZq_bolYF8Ee9iUL1BHvUK4" // Optional 
+    },
+    data: {
+        "messageID": Number(data.SalesOrder),
+        "messageText": oTextAreaComments.getValue()
+    }
+};
+
+apiTriggerPowerAutomate(options);
+```
+
 
 ### Run the application and trigger a call to Power Automate
 
