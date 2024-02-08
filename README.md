@@ -56,6 +56,10 @@ https://neptune-academy.neptune-software.cloud/cockpit.html
 
 - Username: dsagxx (for xx user your group number e.g. dsag1)
 
+> [!NOTE]
+>🏋🏽You can easily download a free Trial here
+> - [Neptune Software Free Trial](https://www.neptune-software.com/free-trial/)
+
 ### Neptune App Designer
 
 We will start by creating a new Neptune app with the App Designer.
