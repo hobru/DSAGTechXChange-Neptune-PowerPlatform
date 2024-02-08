@@ -85,10 +85,10 @@ This is the service we will use in our application it is connect to our S/4 HANA
 Return to the App Designer https://neptune-academy.neptune-software.cloud/appdesigner.html and open the Application created before.
 
 
-- Drag the ODataSource from the tree to the Resources in the Application structure and rename it SalesOrderOData
+- Drag the ODataSource from the tree to the Resources in the Application structure and rename it `SalesOrdersOData`
 ![Connect OData](images/neptune-app-designer-odata.jpg)
 
-- Select the `SalesOrderData` service and on the right of the screen select the oData source `SalesOrder` from the list
+- Select the `SalesOrdersOData` service and on the right of the screen select the oData source `SalesOrder` from the list
 ![Neptune](images/neptune-app-designer-odata2.jpg)
 
 ### Test the app
